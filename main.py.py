@@ -24,14 +24,14 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 # Defining My Functions
 def load_model():
     global scrappedReviews
-    scrappedReviews = pd.read_csv(r'D:\Projects\demo\Forsk100\scrappedReviews.csv')
+    scrappedReviews = pd.read_csv('scrappedReviews.csv')
   
     global pickle_model
-    file = open(r"D:\Projects\demo\pickle_model.pkl", 'rb') 
+    file = open("pickle_model.pkl", 'rb') 
     pickle_model = pickle.load(file)
 
     global vocab
-    file = open(r"D:\Projects\demo\features.pkl", 'rb') 
+    file = open("features.pkl", 'rb') 
     vocab = pickle.load(file)
     #pie chart
     print('Loading Data......')
@@ -239,7 +239,7 @@ def main():
     # favicon  == 16x16 icon ----> favicon.ico  ----> assests
     app.title = project_name
     app.layout = create_app_ui()
-    app.run_server()
+    app.run_server(host='0.0.0.0')
     
     
     
